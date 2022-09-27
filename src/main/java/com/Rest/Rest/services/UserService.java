@@ -18,12 +18,40 @@ public class UserService {
         return usuarioRepository.findAll();
     }
     public Usuario getUsuario(String id) throws Exception {
-        Optional<Usuario> usuarioOptinal =usuarioRepository.findById(id);
-        if(usuarioOptinal.isPresent()){
-            return usuarioOptinal.get();
+        Optional<Usuario> usuarioOptional =usuarioRepository.findById(id);
+        if(usuarioOptional.isPresent()){
+            return usuarioOptional.get();
         }else{
             throw new Exception("Usuario no Existe");
         }
+    }
+    public Usuario saveUsuario(Usuario usuario_param){
+        return usuarioRepository.save(usuario_param);
+    }
+
+    public Usuario putUsuario(Usuario usuario_param){
+        return  usuarioRepository.save(usuario_param);
+    }
+
+    public Usuario patchUsuario(Usuario usuario_param, String id ) throws Exception{
+        try {
+            Usuario usuarioBd =getUsuario(id);
+            //Valida si existe el usuario que traiga los atributos y actualiza
+            if(usuario_param.getNameUser()!=null){
+                usuarioBd.setNamePeople(usuario_param.getNamePeople());
+            } if(usuario_param.getPassword()!=null){
+                usuarioBd.setPassword(usuario_param.getPassword());
+            }
+            return saveUsuario(usuarioBd);
+
+        } catch (Exception e) {
+            throw new Exception("Usuario no se actualizo porq no existe");
+        }
+    }
+
+    public String delete(String id){
+        usuarioRepository.deleteById(id);
+        return "Usuario Eliminado";
     }
 }
 
