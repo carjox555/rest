@@ -2,13 +2,11 @@ package com.Rest.Rest.models;
 
 import lombok.Getter;
 import lombok.Setter;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+
+import javax.persistence.*;
 
 
-@Getter
+    @Getter
     @Setter
     @Entity
     @Table(name = "usuario")
@@ -19,6 +17,8 @@ import javax.persistence.Table;
         private String password;
         @Column
         private String namePeople;
+        @OneToOne
+        private Employee employee;
 
         public Usuario(String nameUser, String password, String namePeople) {
             this.nameUser = nameUser;
