@@ -27,7 +27,7 @@ public class EmployeControler {
                 HttpStatus.OK
         );
     }
-
+/*
     @GetMapping("/usuario/{id}")
     public ResponseEntity<Object>getUsuario(@PathVariable String id){
 
@@ -89,4 +89,6 @@ public class EmployeControler {
                 HttpStatus.OK);
 
     }
+
+ */
 }
