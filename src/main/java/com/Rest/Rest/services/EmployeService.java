@@ -1,7 +1,6 @@
 package com.Rest.Rest.services;
 
 import com.Rest.Rest.models.Employee;
-import com.Rest.Rest.models.Usuario;
 import com.Rest.Rest.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service              //Objeto para registrar en el beans
-public class UserEmploye {
+public class EmployeService {
 
     @Autowired
     private EmployeeRepository EmployeRepository;
@@ -34,7 +33,7 @@ public class UserEmploye {
         return  EmployeRepository.save(employee_param);
     }
 
-    public Employee patchUsuario(Employee employee_param, Integer id ) throws Exception{
+    public Employee patchEmploye(Employee employee_param, Integer id ) throws Exception{
         try {
             Employee employeeBd =getEmploye(id);
             //Valida si existe el empleado que traiga los atributos y actualiza

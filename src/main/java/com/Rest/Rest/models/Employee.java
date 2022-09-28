@@ -19,8 +19,7 @@ public class Employee {
     private Long id;
     private String nombre;
     private String correo;
-    @JsonIgnore  //-> Ignora el set y get del atributo
-    @OneToMany(mappedBy = "employee", orphanRemoval = true, cascade = CascadeType.REMOVE)
+    @OneToOne
     private Usuario usuario;
     /*
 
