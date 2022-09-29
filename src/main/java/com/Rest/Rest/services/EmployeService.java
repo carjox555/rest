@@ -12,13 +12,13 @@ import java.util.Optional;
 public class EmployeService {
 
     @Autowired
-    private EmployeeRepository EmployeRepository;
+    private EmployeeRepository employeRepository;
 
     public List<Employee> getEmploye(){
-        return EmployeRepository.findAll();
+        return employeRepository.findAll();
     }
     public Employee getEmploye(Integer id) throws Exception {
-        Optional<Employee> employeOptional =EmployeRepository.findById(id);
+        Optional<Employee> employeOptional =employeRepository.findById(id);
         if(employeOptional.isPresent()){
             return employeOptional.get();
         }else{
@@ -26,11 +26,11 @@ public class EmployeService {
         }
     }
     public Employee saveEmployee(Employee employee_param){
-        return EmployeRepository.save(employee_param);
+        return employeRepository.save(employee_param);
     }
 
     public Employee putEmployee(Employee employee_param){
-        return  EmployeRepository.save(employee_param);
+        return  employeRepository.save(employee_param);
     }
 
     public Employee patchEmploye(Employee employee_param, Integer id ) throws Exception{
@@ -50,7 +50,7 @@ public class EmployeService {
     }
 
     public String delete(Integer id){
-        EmployeRepository.deleteById(id);
+        employeRepository.deleteById(id);
         return "Empleado Eliminado";
     }
 }
