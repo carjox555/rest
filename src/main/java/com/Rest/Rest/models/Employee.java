@@ -1,6 +1,5 @@
 package com.Rest.Rest.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,8 +18,7 @@ public class Employee {
     private Long id;
     private String nombre;
     private String correo;
-    @JsonIgnore  //-> Ignora el set y get del atributo
-    @OneToOne(mappedBy = "employee", orphanRemoval = true, cascade = CascadeType.REMOVE)
+    @OneToOne
     private Usuario usuario;
     /*
 

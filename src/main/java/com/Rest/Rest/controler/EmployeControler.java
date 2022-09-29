@@ -2,9 +2,7 @@ package com.Rest.Rest.controler;
 
 import com.Rest.Rest.models.Employee;
 import com.Rest.Rest.models.UserResponse;
-import com.Rest.Rest.models.Usuario;
-import com.Rest.Rest.services.UserEmploye;
-import com.Rest.Rest.services.UserService;
+import com.Rest.Rest.services.EmployeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,23 +15,29 @@ import java.util.List;
 public class EmployeControler {
 
     @Autowired
-    private UserEmploye empoyeService;
+    private EmployeService employeService;
 
     @GetMapping("/employes")
     //Responde con un Json
-    public ResponseEntity<List<Employee>>getEmployee(){
+    public ResponseEntity<List<Employee>>getEmployes(){
         return new ResponseEntity<List<Employee>>(
-                empoyeService.getEmploye(),
+                employeService.getEmploye(),
                 HttpStatus.OK
         );
     }
+<<<<<<< HEAD
 /*
     @GetMapping("/usuario/{id}")
     public ResponseEntity<Object>getUsuario(@PathVariable String id){
+=======
+
+    @GetMapping("/employe/{id}")
+    public ResponseEntity<Object>getEmployeId(@PathVariable Integer id){
+>>>>>>> 29f095e7e6c5b6f922db97e08a102b6f7ccb8135
 
         try {
-            Usuario  usuario = usuarioService.getUsuario(id);
-            return new ResponseEntity<>(usuario,HttpStatus.OK);
+            Employee  employee = employeService.getEmploye(id);
+            return new ResponseEntity<>(employee,HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(),
                     HttpStatus.INTERNAL_SERVER_ERROR);
@@ -41,37 +45,37 @@ public class EmployeControler {
 
     }
 
-    @GetMapping("/usuario")
-    public ResponseEntity<Object>getUsuarios(@RequestParam String id){
+    @GetMapping("/employe")
+    public ResponseEntity<Object>getEmploye(@RequestParam Integer id){
         try {
-            Usuario  usuario = usuarioService.getUsuario(id);
-            return new ResponseEntity<>(usuario,HttpStatus.OK);
+            Employee  employee = employeService.getEmploye(id);
+            return new ResponseEntity<>(employee,HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(),
                     HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
-    @PostMapping("/usuario")  //Objeto Response
-    public ResponseEntity<UserResponse>postUsuaario(@RequestBody Usuario usuario){  //RequestBody -> espera un Json  asociado a usuario
+    @PostMapping("/employe")  //Objeto Response
+    public ResponseEntity<UserResponse>postEmploye(@RequestBody Employee employee){  //RequestBody -> espera un Json  asociado a usuario
     return new ResponseEntity<>(
-            new UserResponse("Usuario creado Exitosamente",
-                    usuarioService.saveUsuario(usuario))
+            new UserResponse("Employe creado Exitosamente",
+                    employeService.saveEmployee(employee))
                     ,HttpStatus.OK);
     }
 
-    @PutMapping("/usuario")
-    public ResponseEntity<UserResponse>putUsuario(@RequestBody Usuario usuario){
+    @PutMapping("/employe")
+    public ResponseEntity<UserResponse>putUEmploye(@RequestBody Employee employee){
         return  new ResponseEntity<>(
-                new UserResponse("Usuario Actualizado",usuarioService.putUsuario(usuario)),HttpStatus.OK);
+                new UserResponse("Employe Actualizado",employeService.putEmployee(employee)),HttpStatus.OK);
 
     }
 
-    @PatchMapping("/usuario/{id}")
-    public ResponseEntity<UserResponse>patchUsuario(@RequestBody Usuario usuario,@PathVariable String id ){
+    @PatchMapping("/employe/{id}")
+    public ResponseEntity<UserResponse>patchEmploye(@RequestBody Employee employee,@PathVariable Integer id ){
         try {
             return  new ResponseEntity<>(
-                    new UserResponse("Actualizacion Exitosa",usuarioService.patchUsuario(usuario,  id)),
+                    new UserResponse("Actualizacion Exitosa",employeService.patchEmploye(employee,  id)),
                     HttpStatus.OK);
         } catch (Exception e) {
             return  new ResponseEntity<>(
@@ -81,11 +85,11 @@ public class EmployeControler {
 
     }
 
-    @DeleteMapping("/usuario/{id}")
-    public ResponseEntity<UserResponse>delete(@PathVariable String id){
+    @DeleteMapping("/employe/{id}")
+    public ResponseEntity<UserResponse>delete(@PathVariable Integer id){
         return  new ResponseEntity<>(
 
-                new UserResponse(usuarioService.delete(id),null),
+                new UserResponse(employeService.delete(id),null),
                 HttpStatus.OK);
 
     }

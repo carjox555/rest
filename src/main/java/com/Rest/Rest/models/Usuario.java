@@ -1,5 +1,6 @@
 package com.Rest.Rest.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,13 +18,18 @@ import javax.persistence.*;
         private String password;
         @Column
         private String namePeople;
-        @OneToOne
+        @JsonIgnore  //-> Ignora el set y get del atributo
+        @OneToOne(mappedBy = "usuario",orphanRemoval = true, cascade = CascadeType.REMOVE)
         private Employee employee;
+        @ManyToOne
+        private Profile profile;
 
-        public Usuario(String nameUser, String password, String namePeople) {
+        public Usuario(String nameUser, String password, String namePeople, Employee employe, Profile profile) {
             this.nameUser = nameUser;
             this.password = password;
             this.namePeople = namePeople;
+            this.employee=employe;
+            this.profile=profile;
         }
 
         public Usuario() {
