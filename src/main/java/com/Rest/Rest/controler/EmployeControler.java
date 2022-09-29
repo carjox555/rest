@@ -25,15 +25,10 @@ public class EmployeControler {
                 HttpStatus.OK
         );
     }
-<<<<<<< HEAD
-/*
-    @GetMapping("/usuario/{id}")
-    public ResponseEntity<Object>getUsuario(@PathVariable String id){
-=======
+
 
     @GetMapping("/employe/{id}")
     public ResponseEntity<Object>getEmployeId(@PathVariable Integer id){
->>>>>>> 29f095e7e6c5b6f922db97e08a102b6f7ccb8135
 
         try {
             Employee  employee = employeService.getEmploye(id);
@@ -94,5 +89,5 @@ public class EmployeControler {
 
     }
 
- */
+
 }
