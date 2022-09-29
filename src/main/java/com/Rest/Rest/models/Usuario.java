@@ -19,8 +19,9 @@ import javax.persistence.*;
         @Column
         private String namePeople;
         @JsonIgnore  //-> Ignora el set y get del atributo
-        @OneToOne(mappedBy = "usuario",orphanRemoval = true, cascade = CascadeType.REMOVE)
+        @OneToOne(mappedBy = "usuario")
         private Employee employee;
+
         @ManyToOne
         private Profile profile;
 

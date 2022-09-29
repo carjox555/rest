@@ -1,5 +1,6 @@
 package com.Rest.Rest.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,7 +22,7 @@ public class Profile {
     private String nombre;
     @Column
     private String phone;
-
+    @JsonIgnore
     @OneToMany(mappedBy = "profile")
     private List<Usuario> usuarios;
 
