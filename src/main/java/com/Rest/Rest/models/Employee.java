@@ -27,12 +27,12 @@ public class Employee {
     @JoinColumn(name = "empresa_id")
     private Empresa empresa;
 
-    //    private Rol rol;
+    //    private Rol Rol;
     @Enumerated(value = EnumType.STRING)
 //    @ElementCollection(targetClass = Rol.class, fetch = FetchType.LAZY)
     @ElementCollection(targetClass = Rol.class, fetch = FetchType.EAGER)
-    @Column(name="rol")
-//    private Rol rol;
+    @Column(name="Rol")
+//    private Rol Rol;
     private List<Rol> roles;
 
     @JsonIgnore

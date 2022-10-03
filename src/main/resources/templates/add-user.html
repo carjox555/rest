@@ -19,44 +19,9 @@
   <title>Welcome</title>
 </head>
 <body>
-<div class="container mt-3">
-  <!--<div sec:authorize="isAuthenticated()">-->
-<!--<div th:autorize="hasAnyRole('ADMIN','OPERARIO'"></div>-->
+<form th:object="${newUsuario}">
 
-  <h1 class="h2">List of User</h1>
-  <a href="/usuario/add">Create User</a>
-  <table class="table table-primary table-striped">
-    <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">UserName</th>
-      <th scope="col">Password</th>
-      <th scope="col">NamePeople</th>
-      <th scope="col">Perfil</th>
-      <th scope="col">Acciones</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="usuario : ${usuarios}">
-      <th scope="row">1</th>
-      <td th:text="${usuario.nameUser}"></td>
-      <td th:text="${usuario.password}"></td>
-      <td th:text="${usuario.namePeople}"></td>
-      <td th:text="${usuario.profile.nombre}"></td>
-      <td >
-        <form th:action="@{/delete/usuario/front/{id}(id=${usuario.nameUser})}" th:method="delete">
-          <button class="btn btn-outline-primary" type="submit">Eliminar</button>
-        </form>
-      </td>
-    </tr>
-    </tbody>
-  </table>
-</div>
-<!--  <div sec:authorize="!isAuthenticated()">-->
-<!--<a href="/login">  Iniciar Sesion</a>-->
 
-<!--  </div>-->
-
-</div>
+</form>
 </body>
 </html>

@@ -5,9 +5,10 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 
-    @Getter
+@Getter
     @Setter
     @Entity
     @Table(name = "usuario")
@@ -22,6 +23,9 @@ import javax.persistence.*;
         @OneToOne(mappedBy = "usuario")
         private Employee employee;
 
+        @Enumerated(EnumType.STRING)
+        @ElementCollection(targetClass = Rol.class, fetch = FetchType.EAGER)
+        private List<Rol> roles;
         @ManyToOne
         private Profile profile;
 
